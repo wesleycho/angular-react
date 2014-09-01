@@ -40,6 +40,21 @@ describe('angular-react', function () {
     });
   });
 
+  describe('Factory: $react', function () {
+    var $react;
+    beforeEach(module('angular-react'));
+    beforeEach(inject(function (_$react_) {
+      $react = _$react_;
+    }));
+
+    it('should register a class successfully', function () {
+      var bar = function () {
+        return 'bar';
+      };
+      expect($react.setComponent('foo', bar)).toBe($react);
+    });
+  });
+
   describe('Directive', function () {
     var $compile, $react, compile, scope, reactClass;
     beforeEach(module('angular-react'));
@@ -50,7 +65,7 @@ describe('angular-react', function () {
           var person = this.props.person;
           return (
             React.DOM.div(null, 
-              "Hello ", person, "!"
+              'Hello ', person, '!'
             )
           );
         }
@@ -63,7 +78,7 @@ describe('angular-react', function () {
       $react = _$react_;
       compile = function () {
         return $compile('<react component="foo" props="props"></react>')(scope);
-      }
+      };
     }));
 
     it('should compile with no binding', function () {

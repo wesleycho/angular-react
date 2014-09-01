@@ -7,7 +7,26 @@ angular.module('angular-react', [])
   .provider('$react', function () {
     var reactComponents = {};
 
-    this.register = function (name, reactComponent) {
+    this.register = register.bind(this);
+
+    this.$get = ['React', function (React) {
+      var $react = {
+        getComponent: getComponent,
+        setComponent: setComponent
+      };
+
+      return $react;
+
+      function getComponent(name) {
+        return reactComponents[name];
+      }
+
+      function setComponent(name, reactComponent) {
+        return register.call($react, name, reactComponent);
+      }
+    }];
+
+    function register(name, reactComponent) {
       if (!name) {
         throw 'Invalid React component name';
       }
@@ -16,19 +35,7 @@ angular.module('angular-react', [])
       }
       reactComponents[name] = reactComponent;
       return this;
-    };
-
-    this.$get = ['React', function (React) {
-      var $react = {
-        getComponent: getComponent
-      };
-
-      return $react;
-
-      function getComponent(name) {
-        return reactComponents[name];
-      }
-    }];
+    }
   })
   .directive('react', function ($react, React) {
     return {
@@ -55,5 +62,5 @@ angular.module('angular-react', [])
           React.renderComponent($react.getComponent(attrs.component)(scope[attrs.props]), elem[0]);
         }
       }
-    }
+    };
   });

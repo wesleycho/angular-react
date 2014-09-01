@@ -4,6 +4,17 @@ module.exports = function (grunt) {
   require('load-grunt-tasks')(grunt);
 
   grunt.initConfig({
+    jshint: {
+      options: {
+        jshintrc: true
+      },
+      all: [
+        'Gruntfile.js',
+        'src/angular-react.js',
+        'tests/angular-react.spec.js',
+        'demo/demo.js'
+      ]
+    },
     karma: {
       unit: {
         configFile: 'karma.conf.js',
@@ -13,4 +24,6 @@ module.exports = function (grunt) {
       }
     }
   });
+
+  grunt.registerTask('test', ['jshint', 'karma:unit']);
 };

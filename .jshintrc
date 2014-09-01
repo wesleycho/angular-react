@@ -9,8 +9,22 @@
   "eqnull": true,
   "quotmark": "single",
   "trailing": true,
+  "validthis": true,
+  "strict": false,
+  "globalstrict": true,
   "globals": {
     "angular": true,
-    "React": true
+    "React": true,
+    "window": true,
+    "ddescribe": true,
+    "describe": true,
+    "it": true,
+    "iit": true,
+    "xit": true,
+    "expect": true,
+    "module": true,
+    "inject": true,
+    "beforeEach": true,
+    "require": true
   }
 }

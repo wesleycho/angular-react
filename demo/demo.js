@@ -1,4 +1,5 @@
 'use strict';
+
 angular.module('angular-react')
   .constant('REACT_COMPONENT', {
     hello: window.hello
