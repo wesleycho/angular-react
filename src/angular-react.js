@@ -7,14 +7,14 @@ angular.module('angular-react', [])
   .provider('$react', function () {
     var reactComponents = {};
 
-    this.register = function (name, reactClass) {
+    this.register = function (name, reactComponent) {
       if (!name) {
-        throw 'Invalid React class name';
+        throw 'Invalid React component name';
       }
-      if (!angular.isFunction(reactClass)) {
+      if (!angular.isFunction(reactComponent)) {
         throw 'Invalid React component class';
       }
-      reactComponents[name] = reactClass;
+      reactComponents[name] = reactComponent;
       return this;
     };
 
