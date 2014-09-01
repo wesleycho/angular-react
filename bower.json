@@ -1,0 +1,27 @@
+{
+  "name": "angular-react",
+  "version": "0.0.0",
+  "authors": [
+    "Wesley Cho <wesley.cho@gmail.com>"
+  ],
+  "description": "ReactJS with Angular",
+  "main": "build/angular-react.js",
+  "keywords": [
+    "react",
+    "angular",
+    "angular-react"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2",
+    "react": "~0.11"
+  }
+}

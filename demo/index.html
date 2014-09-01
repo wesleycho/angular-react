@@ -1,0 +1,17 @@
+<!doctype html>
+<html ng-app="angular-react">
+  <head>
+    <title>Demo of using ReactJS with Angular</title>
+  </head>
+  <body ng-controller="DemoCtrl">
+    <input ng-model="data.person">
+    <div>
+      <react component="hello" props="data"></react>
+    </div>
+    <script src="../bower_components/react/react-with-addons.js"></script>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../src/angular-react.js"></script>
+    <script src="../.tmp/hello.js"></script>
+    <script src="demo.js"></script>
+  </body>
+</html>

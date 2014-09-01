@@ -1,0 +1,7 @@
+.idea
+.DS_Store
+.sw*
+.tmp/
+npm_debug.log
+bower_components/
+node_modules/

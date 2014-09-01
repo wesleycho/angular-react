@@ -1,0 +1,26 @@
+{
+  "name": "angular-react",
+  "version": "0.0.0",
+  "description": "ReactJS with Angular",
+  "main": "src/angular-react.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/wesleycho/angular-react.git"
+  },
+  "keywords": [
+    "angular",
+    "react",
+    "reactjs",
+    "react.js",
+    "angular-react"
+  ],
+  "author": "Wesley Cho",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wesleycho/angular-react/issues"
+  },
+  "homepage": "https://github.com/wesleycho/angular-react"
+}
