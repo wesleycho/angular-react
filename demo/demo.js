@@ -3,7 +3,10 @@ angular.module('angular-react')
   .constant('REACT_COMPONENT', {
     hello: window.hello
   })
-  .controller('DemoCtrl', function ($scope, REACT_COMPONENT) {
+  .config(function ($reactProvider, REACT_COMPONENT) {
+    $reactProvider.register('hello', REACT_COMPONENT.hello);
+  })
+  .controller('DemoCtrl', function ($scope, $react) {
     $scope.data = {data: 'World'};
-    $scope.hello = REACT_COMPONENT.hello;
+    $scope.hello = $react.getComponent('hello');
   });
