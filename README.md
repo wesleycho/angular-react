@@ -11,7 +11,7 @@ This is currently a rough WIP.
 
 ## Usage
 
-To use this library, one must register a React component created via the `React.createClass` method to the `$reactProvider`.  The best way to do this is to use separate script files for each component created this way, inject the components into Angular, and then inject the injectable into your controller/service/directive for availability on `$scope`.  Once the component is available on `$scope`, one can use the `react` directive provided in this library to render the component with automatic updates when the state attribute value is updated on `$scope`.
+To use this library, one must register a React component created via the `React.createClass` method to the `$reactProvider`.  The best way to do this is to use separate script files for each component created this way, inject the components into Angular, and then register it.  Once the component is available on `$scope`, one can use the `react` directive provided in this library to render the component with automatic updates when the state attribute value is updated on `$scope`.
 
 ### Example
 
@@ -32,14 +32,13 @@ module.constant('REACT_COMPONENT', {
   hello: helloComponent
 }).config(function ($reactProvider, REACT_COMPONENT) {
   $reactProvider.register('hello', REACT_COMPONENT.hello);
-}).controller('DemoCtrl', function ($scope, $react) {
+}).controller('DemoCtrl', function ($scope) {
   $scope.state = {
     person: 'Wesley'
   };
-  $scope.helloComponent = $react.getComponent('hello');
 });
 
 /* html */
-<react component="helloComponent"></react> // renders <div>Hello World!</div>
-<react component="helloComponent" props="state"></react> // renders <div>Hello Wesley!</div>
+&lt;react component="hello"&gt;&lt;/react&gt; // renders &lt;div&gt;Hello World!&lt;/div&gt;
+&lt;react component="hello" props="state">&lt;/react&gt; // renders &lt;div&gt;Hello Wesley!&lt;/div&gt;
 </pre>

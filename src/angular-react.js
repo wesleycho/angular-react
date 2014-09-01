@@ -30,7 +30,7 @@ angular.module('angular-react', [])
       }
     }];
   })
-  .directive('react', function (React) {
+  .directive('react', function ($react, React) {
     return {
       restrict: 'EA',
       link: function (scope, elem, attrs) {
@@ -52,7 +52,7 @@ angular.module('angular-react', [])
 
         function postponedRender() {
           renderPostponed = false;
-          React.renderComponent(scope[attrs.component](scope[attrs.props]), elem[0]);
+          React.renderComponent($react.getComponent(attrs.component)(scope[attrs.props]), elem[0]);
         }
       }
     }

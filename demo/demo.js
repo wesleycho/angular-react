@@ -6,7 +6,6 @@ angular.module('angular-react')
   .config(function ($reactProvider, REACT_COMPONENT) {
     $reactProvider.register('hello', REACT_COMPONENT.hello);
   })
-  .controller('DemoCtrl', function ($scope, $react) {
+  .controller('DemoCtrl', function ($scope) {
     $scope.data = {data: 'World'};
-    $scope.hello = $react.getComponent('hello');
   });
