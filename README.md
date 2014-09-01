@@ -20,7 +20,7 @@ window.helloComponent = React.createClass({
     /** @jsx React.DOM */
     var person = this.props.person || 'World';
     return (
-      <div>Hello {person}!</div>
+      &lt;div&gt;Hello {person}!&lt;/div&gt;
     );
   }
 });
