@@ -5,7 +5,7 @@
     "Wesley Cho <wesley.cho@gmail.com>"
   ],
   "description": "ReactJS with Angular",
-  "main": "build/angular-react.js",
+  "main": "src/angular-react.js",
   "keywords": [
     "react",
     "angular",
@@ -23,5 +23,8 @@
   "dependencies": {
     "angular": "~1.2",
     "react": "~0.11"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.2"
   }
 }

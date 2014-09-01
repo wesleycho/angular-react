@@ -1,0 +1,16 @@
+{
+  "curly": true,
+  "immed": true,
+  "latedef": "nofunc",
+  "newcap": true,
+  "noarg": true,
+  "sub": true,
+  "boss": true,
+  "eqnull": true,
+  "quotmark": "single",
+  "trailing": true,
+  "globals": {
+    "angular": true,
+    "React": true
+  }
+}
