@@ -4,7 +4,7 @@
   "description": "ReactJS with Angular",
   "main": "src/angular-react.js",
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt karma"
   },
   "repository": {
     "type": "git",
