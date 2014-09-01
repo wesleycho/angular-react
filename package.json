@@ -25,12 +25,12 @@
   "homepage": "https://github.com/wesleycho/angular-react",
   "dependencies": {
     "grunt": "~0.4.2",
-    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-clean": "~0.6.0",
     "grunt-contrib-jshint": "~0.10.0",
     "grunt-contrib-uglify": "~0.5.1",
     "grunt-contrib-jshint": "~0.10.0",
     "grunt-karma": "~0.8.3",
-    "load-grunt-tasks": "~0.3.0"
+    "load-grunt-tasks": "~0.6.0"
   },
   "devDependencies": {
     "karma-chrome-launcher": "^0.1.4",
