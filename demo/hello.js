@@ -2,7 +2,7 @@
 
 window.hello = React.createClass({
   render: function () {
-    var person = (this.props.person) ? this.props.person : 'World';
+    var person = this.props.person || 'World';
     return (
       <div>
         Hello {person}!

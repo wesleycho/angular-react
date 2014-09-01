@@ -4,10 +4,14 @@
     <title>Demo of using ReactJS with Angular</title>
   </head>
   <body ng-controller="DemoCtrl">
+    <h3>Example with two-way data binding</h3>
     <input ng-model="data.person">
     <div>
       <react component="hello" props="data"></react>
     </div>
+    <h3>Example without two-way binding</h3>
+    <react component="hello"></react>
+
     <script src="../bower_components/react/react-with-addons.js"></script>
     <script src="../bower_components/angular/angular.js"></script>
     <script src="../src/angular-react.js"></script>

@@ -4,8 +4,8 @@ This project is for those wishing to integrate [AngularJS](https://angularjs.org
 
 ## Setup
 
-[*] (Recommended) Install `react-tools` via `npm install -g react-tools`
-[*] (Recommended) Run `jsx --watch src/ dest/` (source and destination directories - stub paths as needed)
+* (Recommended) Install `react-tools` via `npm install -g react-tools`
+* (Recommended) Run `jsx --watch src/ dest/` (source and destination directories - stub paths as needed)
 
 ## Usage
 
@@ -16,13 +16,11 @@ To use this library, one must register a React component created via the `React.
 <pre>
 /* helloComponent - lives in separate file for JSX to compile */
 window.helloComponent = React.createClass({
-  getInitialState: {
-    person: 'World'
-  },
   render: function () {
     /** @jsx React.DOM */
+    var person = this.props.person || 'World';
     return (
-      <div>Hello {this.state.person}!</div>
+      <div>Hello {person}!</div>
     );
   }
 });
@@ -41,5 +39,5 @@ module.constant('REACT_COMPONENT', {
 
 /* html */
 <react component="helloComponent"></react> // renders <div>Hello World!</div>
-<react component="helloComponent" state="state"></react> // renders <div>Hello Wesley!</div>
+<react component="helloComponent" props="state"></react> // renders <div>Hello Wesley!</div>
 </pre>

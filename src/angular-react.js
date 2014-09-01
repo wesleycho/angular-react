@@ -43,7 +43,7 @@ angular.module('angular-react', [])
             }
           }, true);
         } else {
-          React.renderComponent();
+          postponedRender();
         }
 
         scope.$on('$destroy', function () {
