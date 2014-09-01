@@ -33,12 +33,12 @@ module.constant('REACT_COMPONENT', {
 }).config(function ($reactProvider, REACT_COMPONENT) {
   $reactProvider.register('hello', REACT_COMPONENT.hello);
 }).controller('DemoCtrl', function ($scope) {
-  $scope.state = {
+  $scope.props = {
     person: 'Wesley'
   };
 });
 
 /* html */
 &lt;react component="hello"&gt;&lt;/react&gt; // renders &lt;div&gt;Hello World!&lt;/div&gt;
-&lt;react component="hello" props="state">&lt;/react&gt; // renders &lt;div&gt;Hello Wesley!&lt;/div&gt;
+&lt;react component="hello" props="props">&lt;/react&gt; // renders &lt;div&gt;Hello Wesley!&lt;/div&gt;
 </pre>
