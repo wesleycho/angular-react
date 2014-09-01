@@ -2,6 +2,8 @@
 
 This project is for those wishing to integrate [AngularJS](https://angularjs.org) using [ReactJS](http://facebook.github.io/react/), a performant view layer that can play well with a popular MV* framework for complex web applications.
 
+This is currently a rough WIP.
+
 ## Setup
 
 * (Recommended) Install `react-tools` via `npm install -g react-tools`
