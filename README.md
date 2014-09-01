@@ -1,4 +1,4 @@
-# angular-react [![Build Status](https://travis-ci.org/wesleycho/angular-react.js.svg?branch=master)](https://travis-ci.org/wesleycho/angular-react.js)
+# angular-react [![Build Status](https://travis-ci.org/wesleycho/angular-react.svg?branch=master)](https://travis-ci.org/wesleycho/angular-react)
 
 This project is for those wishing to integrate [AngularJS](https://angularjs.org) using [ReactJS](http://facebook.github.io/react/), a performant view layer that can play well with a popular MV* framework for complex web applications.
 
