@@ -1,66 +1,59 @@
 'use strict';
 
-angular.module('angular-react', [])
-  .factory('React', function ($window) {
-    return $window.React;
-  })
-  .provider('$react', function () {
-    var reactComponents = {};
-
-    this.register = register.bind(this);
-
-    this.$get = ['React', function (React) {
+(function(angular, React) {
+  
+  angular.module('angular-react', []).value('React', React)
+    .factory('$react', ['React', function (React) {
+      
+      var components = {};
       var $react = {
-        getComponent: getComponent,
-        setComponent: setComponent
+        createClass: createReactDirective
       };
 
       return $react;
+      
+      function createReactDirective(componentName, reactClass, options) {
+        
+        if(!components[componentName]){
+          components[componentName] = React.createClass(reactClass);
+        }
+        
+        var component = components[componentName];
 
-      function getComponent(name) {
-        return reactComponents[name];
-      }
-
-      function setComponent(name, reactComponent) {
-        return register.call($react, name, reactComponent);
-      }
-    }];
-
-    function register(name, reactComponent) {
-      if (!name) {
-        throw 'Invalid React component name';
-      }
-      if (!angular.isFunction(reactComponent)) {
-        throw 'Invalid React component class';
-      }
-      reactComponents[name] = reactComponent;
-      return this;
-    }
-  })
-  .directive('react', function ($react, React) {
-    return {
-      restrict: 'EA',
-      link: function (scope, elem, attrs) {
-        var renderPostponed = false;
-        if (attrs.props) {
-          scope.$watch(attrs.props, function () {
-            if (!renderPostponed) {
-              renderPostponed = true;
-              scope.$$postDigest(postponedRender);
+        var directive = {
+          restrict: 'EA',
+          link: function (scope, elem, attrs) {
+            var renderPostponed = false;
+            if (attrs.props) {
+              scope.$watch(attrs.props, function() {
+                if (!renderPostponed) {
+                  renderPostponed = true;
+                  scope.$$postDigest(postponedRender);
+                }
+              }, true);
+            } else {
+              postponedRender();
             }
-          }, true);
-        } else {
-          postponedRender();
-        }
 
-        scope.$on('$destroy', function () {
-          React.unmountComponentAtNode(elem[0]);
-        });
+            scope.$on('$destroy', function() {
+              React.unmountComponentAtNode(elem[0]);
+            });
 
-        function postponedRender() {
-          renderPostponed = false;
-          React.renderComponent($react.getComponent(attrs.component)(scope[attrs.props]), elem[0]);
+            function postponedRender() {
+              renderPostponed = false;
+              React.renderComponent(component(scope[attrs.props]), elem[0]);
+            }
+          }
+        };
+
+        if (angular.isObject(options)) {
+          angular.extend(directive, options);
+          if (directive.compile) {
+            delete directive.link;
+          }
         }
+        
+        return directive;
       }
-    };
-  });
+    }]);
+})(angular, React);

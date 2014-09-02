@@ -16,6 +16,7 @@
     "angular": true,
     "React": true,
     "window": true,
+    "jasmine": true,
     "ddescribe": true,
     "describe": true,
     "it": true,

@@ -1,6 +1,6 @@
-.idea
 .DS_Store
 .sw*
+.idea/
 .tmp/
 npm_debug.log
 bower_components/

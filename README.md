@@ -11,34 +11,32 @@ This is currently a rough WIP.
 
 ## Usage
 
-To use this library, one must register a React component created via the `React.createClass` method to the `$reactProvider`.  The best way to do this is to use separate script files for each component created this way, inject the components into Angular, and then register it.  Once the component is available on `$scope`, one can use the `react` directive provided in this library to render the component with automatic updates when the state attribute value is updated on `$scope`.
+To use this library, one must inject the `$react` helper service into your directive.  `$react` is a wrapper around the `React` api that implements a createClass method, which registers the React component class and creates a directive object.  If the component is already registered, it will return you the component.
 
 ### Example
 
 <pre>
-/* helloComponent - lives in separate file for JSX to compile */
-window.helloComponent = React.createClass({
-  render: function () {
-    /** @jsx React.DOM */
-    var person = this.props.person || 'World';
-    return (
-      &lt;div&gt;Hello {person}!&lt;/div&gt;
-    );
-  }
+/* hello directive - lives in separate file for JSX to compile */
+module.directive('hello', function ($react) {
+  return $react.createClass('hello', {
+    render: function () {
+      /** @jsx React.DOM */
+      var person = this.props.person || 'World';
+      return (
+        &lt;div&gt;Hello {person}!&lt;/div&gt;
+      );
+    }
+  });
 });
 
 /* Scripts */
-module.constant('REACT_COMPONENT', {
-  hello: helloComponent
-}).config(function ($reactProvider, REACT_COMPONENT) {
-  $reactProvider.register('hello', REACT_COMPONENT.hello);
-}).controller('DemoCtrl', function ($scope) {
+module.controller('DemoCtrl', function ($scope) {
   $scope.props = {
     person: 'Wesley'
   };
 });
 
 /* html */
-&lt;react component="hello"&gt;&lt;/react&gt; // renders &lt;div&gt;Hello World!&lt;/div&gt;
-&lt;react component="hello" props="props">&lt;/react&gt; // renders &lt;div&gt;Hello Wesley!&lt;/div&gt;
+&lt;hello&gt;&lt;/hello&gt; // renders &lt;div&gt;Hello World!&lt;/div&gt;
+&lt;hello props="props">&lt;/hello&gt; // renders &lt;div&gt;Hello Wesley!&lt;/div&gt;
 </pre>

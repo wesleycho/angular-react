@@ -1,12 +1,15 @@
 /** @jsx React.DOM */
 
-window.hello = React.createClass({
-  render: function () {
-    var person = this.props.person || 'World';
-    return (
-      <div>
-        Hello {person}!
-      </div>
-    );
-  }
-});
+angular.module('angular-react')
+  .directive('hello', function ($react) {
+    return $react.createClass('hello', {
+      render: function () {
+        var person = this.props.person || 'World';
+        return (
+          <div>
+            Hello {person}!
+          </div>
+        );
+      }
+    });
+  });
