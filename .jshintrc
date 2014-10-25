@@ -26,6 +26,7 @@
     "module": true,
     "inject": true,
     "beforeEach": true,
-    "require": true
+    "require": true,
+    "spyOn": true
   }
 }
