@@ -47,4 +47,5 @@ module.controller('DemoCtrl', function ($scope) {
   *  componentName: String
   *  reactClass: React class - standard input for [React.createClass](http://facebook.github.io/react/docs/top-level-api.html#react.createclass)
   *  options: Object.  Standard input for [directive object definitions](https://docs.angularjs.org/api/ng/service/$compile)
+
 `$react.renderComponent(scope, element, attributes)` - function that takes a $scope, element, and attributes.  These are the same arguments passed in by a linking function in a directive.
