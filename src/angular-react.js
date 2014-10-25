@@ -60,7 +60,7 @@
             renderPostponed = false;
             React.renderComponent(component(scope[attrs.props]), elem[0]);
           }
-        }
+        };
       }
     }]);
 })(angular, React);
