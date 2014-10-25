@@ -7,7 +7,8 @@
       
       var components = {};
       var $react = {
-        createClass: createReactDirective
+        createClass: createReactDirective,
+        renderComponent: renderComponent
       };
 
       return $react;
@@ -22,28 +23,7 @@
 
         var directive = {
           restrict: 'EA',
-          link: function (scope, elem, attrs) {
-            var renderPostponed = false;
-            if (attrs.props) {
-              scope.$watch(attrs.props, function() {
-                if (!renderPostponed) {
-                  renderPostponed = true;
-                  scope.$$postDigest(postponedRender);
-                }
-              }, true);
-            } else {
-              postponedRender();
-            }
-
-            scope.$on('$destroy', function() {
-              React.unmountComponentAtNode(elem[0]);
-            });
-
-            function postponedRender() {
-              renderPostponed = false;
-              React.renderComponent(component(scope[attrs.props]), elem[0]);
-            }
-          }
+          link: renderComponent(component)
         };
 
         if (angular.isObject(options)) {
@@ -54,6 +34,33 @@
         }
         
         return directive;
+      }
+
+      function renderComponent(component) {
+        return function (scope, elem, attrs) {
+          var renderPostponed = false;
+          if (attrs.props) {
+            scope.$watch(function () {
+              return attrs.props;
+            }, function() {
+              if (!renderPostponed) {
+                renderPostponed = true;
+                scope.$$postDigest(postponedRender);
+              }
+            }, true);
+          } else {
+            postponedRender();
+          }
+
+          scope.$on('$destroy', function() {
+            React.unmountComponentAtNode(elem[0]);
+          });
+
+          function postponedRender() {
+            renderPostponed = false;
+            React.renderComponent(component(scope[attrs.props]), elem[0]);
+          }
+        }
       }
     }]);
 })(angular, React);
